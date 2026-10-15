@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Andrew Nduba — Software &amp; Web Developer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#F6F4EF; --surface:#EFECE3; --ink:#14181D; --muted:#6B6F76;
+    --accent:#2F6F5E; --line:#D8D3C6; --font-size-scale:1;
+    color-scheme: light;
+  }
+  @media (prefers-color-scheme: dark){
+    :root:not([data-theme="light"]){
+      --bg:#14181D; --surface:#1B2026; --ink:#F2F0EA; --muted:#9A9FA6;
+      --accent:#5FB89D; --line:#2A3038; color-scheme: dark;
+    }
+  }
+  :root[data-theme="dark"]{
+    --bg:#14181D; --surface:#1B2026; --ink:#F2F0EA; --muted:#9A9FA6;
+    --accent:#5FB89D; --line:#2A3038; color-scheme: dark;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-padding-top:env(safe-area-inset-top,0px);}
+  body{
+    margin:0; background:var(--bg); color:var(--ink);
+    font-family:'IBM Plex Sans',system-ui,sans-serif;
+    padding-top:env(safe-area-inset-top,0px);
+    padding-bottom:env(safe-area-inset-bottom,0px);
+    line-height:1.6;
+  }
+  .wrap{max-width:720px; margin:0 auto; padding:0 24px;}
+  header.hero{padding:96px 0 64px;}
+  .mono{font-family:'IBM Plex Mono',monospace; font-size:13px; color:var(--muted);}
+  h1{
+    font-family:'Space Grotesk',sans-serif; font-weight:700;
+    font-size:clamp(34px,6vw,52px); line-height:1.08; margin:14px 0 10px; letter-spacing:-0.01em;
+  }
+  .role{font-family:'Space Grotesk',sans-serif; font-weight:500; font-size:19px; color:var(--accent); margin:0 0 22px;}
+  p.lede{max-width:56ch; font-size:17px; color:var(--ink); margin:0 0 28px;}
+  .meta-row{display:flex; flex-wrap:wrap; gap:8px 18px; font-family:'IBM Plex Mono',monospace; font-size:13px; color:var(--muted);}
+  .meta-row a{color:var(--muted); text-decoration:none; border-bottom:1px solid var(--line);}
+  .meta-row a:hover{color:var(--accent); border-color:var(--accent);}
+
+  section{padding:40px 0; border-top:1px solid var(--line);}
+  h2{
+    font-family:'Space Grotesk',sans-serif; font-weight:600; font-size:15px;
+    margin:0 0 24px; color:var(--muted);
+  }
+
+  .facts{display:grid; grid-template-columns:repeat(2,1fr); gap:16px 28px;}
+  .fact dt{font-family:'IBM Plex Mono',monospace; font-size:12px; color:var(--muted); margin-bottom:3px;}
+  .fact dd{margin:0; font-size:15px;}
+
+  .skill-block{margin-bottom:22px;}
+  .skill-block:last-child{margin-bottom:0;}
+  .skill-head{display:flex; justify-content:space-between; align-items:baseline; gap:12px; margin-bottom:6px;}
+  .skill-head strong{font-family:'Space Grotesk',sans-serif; font-size:16px; font-weight:600;}
+  .skill-head span{font-size:13px; color:var(--muted);}
+  .skill-items{font-size:14.5px; color:var(--muted);}
+
+  .proj{padding:26px 0; border-top:1px solid var(--line);}
+  .proj:first-child{border-top:none; padding-top:0;}
+  .proj-top{display:flex; justify-content:space-between; align-items:baseline; gap:16px; margin-bottom:8px;}
+  .proj-top h3{font-family:'Space Grotesk',sans-serif; font-size:19px; font-weight:600; margin:0;}
+  .proj-top .year{font-family:'IBM Plex Mono',monospace; font-size:12px; color:var(--muted); white-space:nowrap;}
+  .proj p{margin:0 0 12px; font-size:15px; color:var(--ink); max-width:60ch;}
+  .proj .tags{display:flex; flex-wrap:wrap; gap:6px 10px; font-family:'IBM Plex Mono',monospace; font-size:12px; color:var(--accent); margin-bottom:8px;}
+  .proj .status{font-size:12.5px; color:var(--muted);}
+  .proj a.pl{color:var(--ink); text-decoration:none; border-bottom:1px solid var(--line);}
+  .proj a.pl:hover{border-color:var(--accent); color:var(--accent);}
+
+  footer{padding:48px 0 72px; border-top:1px solid var(--line);}
+  footer h2{margin-bottom:14px;}
+  footer .big{font-family:'Space Grotesk',sans-serif; font-size:24px; font-weight:600; margin:0 0 18px;}
+  footer .big a{color:var(--ink); text-decoration:none; border-bottom:2px solid var(--accent);}
+  footer .links{display:flex; gap:20px; font-family:'IBM Plex Mono',monospace; font-size:13px;}
+  footer .links a{color:var(--muted); text-decoration:none;}
+  footer .links a:hover{color:var(--accent);}
+
+  @media (max-width:560px){
+    .facts{grid-template-columns:1fr;}
+    header.hero{padding:64px 0 48px;}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header class="hero">
+    <div class="mono">Nairobi, Kenya — open to work, local &amp; remote</div>
+    <h1>Andrew Nduba</h1>
+    <p class="role">Software &amp; Web Developer</p>
+    <p class="lede">I build web applications end to end — the interface people use, the API behind it, and the pipeline that ships it. Three years in, with a focus on software that's still readable and dependable long after launch.</p>
+    <div class="meta-row">
+      <a href="https://github.com/Andreaz254" target="_blank" rel="noopener">github.com/Andreaz254</a>
+      <a href="https://linkedin.com/in/andrew-nduba-a97005431" target="_blank" rel="noopener">linkedin.com/in/andrew-nduba</a>
+      <a href="mailto:andreasvegasdkut@gmail.com">andreasvegasdkut@gmail.com</a>
+    </div>
+  </header>
+
+  <section>
+    <h2>At a glance</h2>
+    <dl class="facts">
+      <div class="fact"><dt>Experience</dt><dd>3 years, professional</dd></div>
+      <div class="fact"><dt>Primary language</dt><dd>Python</dd></div>
+      <div class="fact"><dt>Also strong in</dt><dd>TypeScript · C · C++ · C#</dd></div>
+      <div class="fact"><dt>Domain depth</dt><dd>GPS tracking &amp; fleet telematics</dd></div>
+    </dl>
+  </section>
+
+  <section>
+    <h2>What I work with</h2>
+    <div class="skill-block">
+      <div class="skill-head"><strong>Python ecosystem</strong><span>fastest, most confident</span></div>
+      <div class="skill-items">Django / Flask · FastAPI · pandas &amp; requests · pytest · automation &amp; scripting</div>
+    </div>
+    <div class="skill-block">
+      <div class="skill-head"><strong>Web &amp; interfaces</strong><span>interfaces that stay fast under real data</span></div>
+      <div class="skill-items">TypeScript · React &amp; Next.js · Tailwind CSS · Node.js · accessibility</div>
+    </div>
+    <div class="skill-block">
+      <div class="skill-head"><strong>Data &amp; platform</strong><span>getting it shipped and keeping it running</span></div>
+      <div class="skill-items">PostgreSQL · REST APIs · auth &amp; sessions · Docker / CI/CD · Linux &amp; networking</div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Certifications</h2>
+    <div class="proj">
+      <div class="proj-top"><h3>Prompt Engineering, AI</h3><span class="year">2026</span></div>
+      <p>Structured training in designing, testing and refining prompts for large language models, and applying them inside real software workflows.</p>
+      <div class="status">Moringa School</div>
+    </div>
+    <div class="proj">
+      <div class="proj-top"><h3>TryHackMe</h3></div>
+      <p>Hands-on offensive and defensive security labs — practical exposure to how applications get attacked, which informs how I build and secure them.</p>
+      <div class="status">TryHackMe</div>
+    </div>
+    <div class="proj">
+      <div class="proj-top"><h3>Cisco Packet Tracer</h3></div>
+      <p>Network design and simulation: routing, switching, addressing and topology troubleshooting — the layer everything I ship depends on.</p>
+      <div class="status">Cisco Networking Academy</div>
+    </div>
+    <div class="proj">
+      <div class="proj-top"><h3>Computer Science</h3></div>
+      <p>Core coursework covering programming fundamentals, data structures and systems — the foundation underneath the frameworks I build with day to day.</p>
+    </div>
+    <div class="proj">
+      <div class="proj-top"><h3>English and Linguistics</h3></div>
+      <p>Study of language structure and communication — sharpens how clearly I write documentation, specs and anything meant for someone else to read.</p>
+    </div>
+  </section>
+
+  <section>
+    <h2>Selected work</h2>
+
+    <div class="proj">
+      <div class="proj-top"><h3>Vehicle tracking user management portal</h3><span class="year">2025</span></div>
+      <p>A management portal for a vehicle tracking company running the TK003 GPS/LBS tracker. Operators register devices, assign them to vehicles and accounts, and review live position and trip history across cars, motorcycles and full fleets from one dashboard.</p>
+      <div class="tags">TypeScript · React · Node.js · PostgreSQL · GPS/LBS data</div>
+      <div class="status">Full stack · in production</div>
+    </div>
+
+    <div class="proj">
+      <div class="proj-top"><h3>Company site — TK003 tracker</h3><span class="year">2025</span></div>
+      <p>The public-facing site for the same company: device specs, fleet-management use cases, and enquiry capture, structured so the sales team can keep product pages current without touching code.</p>
+      <div class="tags">Next.js · TypeScript · Tailwind CSS · SEO</div>
+      <div class="status">Design &amp; build · live</div>
+    </div>
+
+    <div class="proj">
+      <div class="proj-top"><h3>Open Internet Download Manager</h3><span class="year">2024</span></div>
+      <p>An open-source download manager with a desktop GUI — queue handling, progress monitoring and multithreaded downloads, built on aria2c.</p>
+      <div class="tags">Python · CustomTkinter · aria2c · multithreading</div>
+      <div class="status"><a class="pl" href="https://github.com/Andreaz254/Open-Internet-Download-Manager-Oidm-" target="_blank" rel="noopener">View on GitHub</a> · open source</div>
+    </div>
+  </section>
+
+  <footer>
+    <h2>Get in touch</h2>
+    <p class="big">Have something that needs building? <a href="mailto:andreasvegasdkut@gmail.com">Email me</a>.</p>
+    <div class="links">
+      <a href="https://github.com/Andreaz254" target="_blank" rel="noopener">GitHub</a>
+      <a href="https://linkedin.com/in/andrew-nduba-a97005431" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="mailto:andreasvegasdkut@gmail.com">Email</a>
+    </div>
+  </footer>
+
+</div>
+</body>
+</html>
